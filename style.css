@@ -1,73 +1,106 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.container {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
-}
-
-h1 {
-  margin-bottom: 20px;
+  background-color: #f8f9fb;
   color: #333;
 }
 
-.date-control {
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  color: #4a90e2;
+}
+
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
   margin-bottom: 20px;
 }
 
-input[type="date"] {
-  padding: 8px 10px;
+.calendar div {
+  padding: 12px;
+  background: #f0f4ff;
+  border-radius: 6px;
+  text-align: center;
+  cursor: default;
+  transition: all 0.2s;
+}
+
+.calendar div:hover {
+  background-color: #cce0ff;
+}
+
+.calendar div.today {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.calendar div.empty {
+  background: none;
+  cursor: default;
+}
+
+.calendar div.clickable {
+  cursor: pointer;
+  background-color: #4a90e2;
+  color: white;
+}
+
+.calendar div.clickable:hover {
+  background-color: #357abd;
+}
+
+/* Manual entry section */
+.manual-entry {
+  text-align: center;
+}
+
+.manual-entry h2 {
+  margin-bottom: 10px;
+}
+
+.manual-entry input[type="date"] {
+  padding: 8px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-button {
-  padding: 8px 12px;
-  margin-left: 10px;
+.manual-entry button {
+  padding: 8px 15px;
   font-size: 16px;
-  background-color: #3498db;
-  border: none;
+  margin-left: 10px;
+  background-color: #4a90e2;
   color: white;
-  border-radius: 5px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #2980b9;
+.manual-entry button:hover {
+  background-color: #357abd;
 }
 
-.date-display {
-  font-size: 20px;
+.message {
   margin-top: 10px;
-  color: #555;
-}
-
-.link-display {
-  margin-top: 20px;
-}
-
-.link-display a {
-  color: #2c3e50;
-  text-decoration: none;
   font-weight: bold;
+  color: #d9534f; /* red */
 }
-
-.link-display a:hover {
-  text-decoration: underline;
-}
-
-
