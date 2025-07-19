@@ -3,8 +3,7 @@ const monthYearEl = document.getElementById("monthYear");
 const prevMonthBtn = document.getElementById("prevMonth");
 const nextMonthBtn = document.getElementById("nextMonth");
 const manualDateInput = document.getElementById("manualDate");
-const openSheetBtn = document.getElementById("openSheetBtn");
-const manualMessage = document.getElementById("manualMessage");
+const goToDateBtn = document.getElementById("goToDate");
 
 let currentDate = new Date();
 
@@ -48,7 +47,6 @@ function renderCalendar(date) {
     cell.textContent = i;
 
     if (sheetLinks[key]) {
-      cell.classList.add("clickable");
       cell.onclick = () => window.open(sheetLinks[key], '_blank');
       cell.title = "Open Finance Sheet";
     }
@@ -60,28 +58,29 @@ function renderCalendar(date) {
 prevMonthBtn.addEventListener("click", () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
   renderCalendar(currentDate);
-  manualMessage.textContent = "";
 });
 
 nextMonthBtn.addEventListener("click", () => {
   currentDate.setMonth(currentDate.getMonth() + 1);
   renderCalendar(currentDate);
-  manualMessage.textContent = "";
 });
 
-openSheetBtn.addEventListener("click", () => {
-  manualMessage.textContent = "";
-  const inputDate = manualDateInput.value;
-  if (!inputDate) {
-    manualMessage.textContent = "Please select a date.";
+goToDateBtn.addEventListener("click", () => {
+  const input = manualDateInput.value.trim();
+  // Validate YYYY-MM-DD with regex
+  const regex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!regex.test(input)) {
+    alert("Please enter a valid date in YYYY-MM-DD format.");
     return;
   }
-  if (sheetLinks[inputDate]) {
-    window.open(sheetLinks[inputDate], '_blank');
-  } else {
-    manualMessage.textContent = "No sheet assigned for this date.";
+  const newDate = new Date(input);
+  if (isNaN(newDate.getTime())) {
+    alert("Invalid date. Please enter a correct date.");
+    return;
   }
+  currentDate = newDate;
+  renderCalendar(currentDate);
+  manualDateInput.value = "";
 });
 
-// Initialize calendar on load
 renderCalendar(currentDate);
