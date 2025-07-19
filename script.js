@@ -28,3 +28,6 @@ function goToDate() {
     sheetLink.innerHTML = `<span style="color:gray;">No sheet assigned for this date.</span>`;
   }
 }
+
+
+
