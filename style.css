@@ -28,11 +28,39 @@ h1 {
   font-size: 18px;
 }
 
+.manual-date-entry {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.manual-date-entry input {
+  padding: 6px 10px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 180px;
+  margin-right: 8px;
+}
+
+.manual-date-entry button {
+  padding: 7px 15px;
+  font-size: 1em;
+  border: none;
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.manual-date-entry button:hover {
+  background-color: #357abd;
+}
+
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  margin-bottom: 20px;
 }
 
 .calendar div {
@@ -40,7 +68,7 @@ h1 {
   background: #f0f4ff;
   border-radius: 6px;
   text-align: center;
-  cursor: default;
+  cursor: pointer;
   transition: all 0.2s;
 }
 
@@ -57,53 +85,3 @@ h1 {
   background: none;
   cursor: default;
 }
-
-.calendar div.clickable {
-  cursor: pointer;
-  background-color: #4a90e2;
-  color: white;
-}
-
-.calendar div.clickable:hover {
-  background-color: #357abd;
-}
-
-/* Manual entry section */
-.manual-entry {
-  text-align: center;
-}
-
-.manual-entry h2 {
-  margin-bottom: 10px;
-}
-
-.manual-entry input[type="date"] {
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.manual-entry button {
-  padding: 8px 15px;
-  font-size: 16px;
-  margin-left: 10px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.manual-entry button:hover {
-  background-color: #357abd;
-}
-
-.message {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #d9534f; /* red */
-}
-
-
-
