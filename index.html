@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>MyFinance Buddy - Calendar</title>
-  <link href="style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -16,20 +16,15 @@
       <button id="nextMonth">→</button>
     </div>
 
-    <div class="calendar" id="calendar"></div>
-
-    <div class="manual-entry">
-      <h2>Open Sheet by Date</h2>
-      <input type="date" id="manualDate" />
-      <button id="openSheetBtn">Open Sheet</button>
-      <p id="manualMessage" class="message"></p>
+    <div class="manual-date-entry">
+      <label for="manualDate">Enter date (YYYY-MM-DD): </label>
+      <input type="text" id="manualDate" placeholder="e.g. 2025-07-19" />
+      <button id="goToDate">Go</button>
     </div>
+
+    <div class="calendar" id="calendar"></div>
   </div>
 
   <script src="calendar.js"></script>
 </body>
 </html>
-
-
-
-
