@@ -9,12 +9,20 @@ let selectedDate = null;
 
 // Map dates (YYYY-MM-DD) to Google Sheet URLs
 const sheetLinks = {
-  "2025-07-19": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=2059997641",
-  "2025-07-20": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=719913119",
-  "2025-07-21": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=391482263",
-  "2025-07-22": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=771623278",
-  "2025-07-23": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=610499498"
-};
+  "2025-07-19": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=2059997641#gid=2059997641",
+  "2025-07-20": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=719913119#gid=719913119",
+  "2025-07-21": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=391482263#gid=391482263",
+  "2025-07-22": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=771623278#gid=771623278",
+  "2025-07-23": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=610499498#gid=610499498",
+  "2025-07-24": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=1844047310#gid=1844047310",
+  "2025-07-25": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=98884320#gid=98884320",
+  "2025-07-26": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=621027058#gid=621027058",
+  "2025-07-27": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=1216031467#gid=1216031467",
+  "2025-07-28": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=1001532306#gid=1001532306",
+  "2025-07-29": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=1369161843#gid=1369161843",
+  "2025-07-30": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=73124884#gid=73124884",
+  "2025-07-31": "https://docs.google.com/spreadsheets/d/1tDO2QV1pWv-soEEnhA3Pugy7u7FvepTKRBqj_WzssSg/edit?gid=841944757#gid=841944757"
+}
 
 function formatDateKey(date) {
   const yyyy = date.getFullYear();
