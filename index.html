@@ -3,20 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyFinance Buddy</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>MyFinance Buddy - Calendar</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <h1>MyFinance Buddy</h1>
-    <div class="date-control">
-      <input type="date" id="manualDate" />
-      <button onclick="goToDate()">Go</button>
+    <h1>📅 MyFinance Buddy Calendar</h1>
+
+    <div class="calendar-nav">
+      <button id="prevMonth">←</button>
+      <span id="monthYear"></span>
+      <button id="nextMonth">→</button>
     </div>
-    <div id="dateDisplay" class="date-display"></div>
-    <div id="sheetLink" class="link-display"></div>
+
+    <div class="calendar" id="calendar"></div>
+
+    <div class="manual-entry">
+      <h2>Open Sheet by Date</h2>
+      <input type="date" id="manualDate" />
+      <button id="openSheetBtn">Open Sheet</button>
+      <p id="manualMessage" class="message"></p>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="calendar.js"></script>
 </body>
 </html>
