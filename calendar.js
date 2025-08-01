@@ -3,10 +3,9 @@ const monthYear = document.getElementById("monthYear");
 const prevBtn = document.getElementById("prevMonth");
 const nextBtn = document.getElementById("nextMonth");
 
-// Always start with current month, today as selected
-const now = new Date();
-let currentDate = new Date(now.getFullYear(), now.getMonth(), 1);
-let selectedDate = now;
+// Start with today's date
+let currentDate = new Date();
+let selectedDate = null;
 
 // Map dates (YYYY-MM-DD) to Google Sheet URLs
 const sheetLinks = {
@@ -79,7 +78,7 @@ function renderCalendar(date) {
     calendarBody.appendChild(document.createElement("div"));
   }
 
-  const todayStr = formatDateKey(now);
+  const todayStr = formatDateKey(new Date());
 
   for (let day = 1; day <= daysInMonth; day++) {
     const cell = document.createElement("div");
@@ -88,26 +87,18 @@ function renderCalendar(date) {
     const thisDate = new Date(year, month, day);
     const thisDateKey = formatDateKey(thisDate);
 
-    // Improved today highlight for visibility
     if (thisDateKey === todayStr) {
       cell.classList.add("today");
-      cell.setAttribute("aria-label", "Today");
-      cell.style.boxShadow = "0 0 0 3px #228be6, 0 2px 8px #74c0fc80";
-      cell.style.border = "2px solid #228be6";
     }
 
-    // Selected date highlight
     if (selectedDate && thisDateKey === formatDateKey(selectedDate)) {
       cell.classList.add("selected");
-      cell.style.boxShadow = "0 0 8px #228be680";
     }
 
-    // Linked dates: add icon and tooltip for visibility
     if (sheetLinks[thisDateKey]) {
       cell.style.fontWeight = "bold";
       cell.style.color = "#007bff";
       cell.title = "Open Google Sheet";
-      cell.innerHTML += ' <span style="font-size:1em;">🔗</span>';
 
       cell.onclick = () => {
         window.open(sheetLinks[thisDateKey], "_blank");
@@ -118,32 +109,20 @@ function renderCalendar(date) {
       cell.onclick = () => {
         selectedDate = thisDate;
         renderCalendar(currentDate);
-        showInlineMessage(`Selected Date: ${thisDate.toDateString()}<br>(No Google Sheet linked yet)`);
+        alert(`Selected Date: ${thisDate.toDateString()}\n(No Google Sheet linked yet)`);
       };
     }
 
-    // Add keyboard accessibility
+    // Allow keyboard navigation (accessibility)
     cell.tabIndex = 0;
-    cell.onkeydown = (e) => {
-      if (e.key === "Enter" || e.key === " ") cell.onclick();
-    };
+    cell.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        cell.click();
+      }
+    });
 
     calendarBody.appendChild(cell);
   }
-}
-
-// Inline message display instead of alert
-function showInlineMessage(msg) {
-  let msgDiv = document.getElementById("inlineMessage");
-  if (!msgDiv) {
-    msgDiv = document.createElement("div");
-    msgDiv.id = "inlineMessage";
-    msgDiv.className = "inline-message";
-    calendarBody.parentElement.appendChild(msgDiv);
-  }
-  msgDiv.innerHTML = msg;
-  msgDiv.style.display = "block";
-  setTimeout(() => { msgDiv.style.display = "none"; }, 2500);
 }
 
 prevBtn.addEventListener("click", () => {
@@ -163,17 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (datePicker) {
     // Set initial date as today
-    const today = now;
+    const today = new Date();
     datePicker.value = today.toISOString().split('T')[0];
 
     datePicker.addEventListener('change', () => {
-      const pickedDate = new Date(datePicker.value);
-      if (isNaN(pickedDate)) return;
+      const selectedDate = new Date(datePicker.value);
+      if (isNaN(selectedDate)) return;
 
-      // Set calendar to picked date month, highlight picked day
-      currentDate = new Date(pickedDate.getFullYear(), pickedDate.getMonth(), 1);
-      selectedDate = pickedDate;
-      renderCalendar(currentDate);
+      // You can now call your logic to update the calendar:
+      showDate(selectedDate);
     });
   }
 });
+
+// Replace your current render method to accept a custom date
+function showDate(date) {
+  currentDate = date;
+  renderCalendar(currentDate);
+}
