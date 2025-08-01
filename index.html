@@ -117,8 +117,8 @@
     const prevBtn = document.getElementById("prevMonth");
     const nextBtn = document.getElementById("nextMonth");
 
-    // Start with July 2025
-    let currentDate = new Date(2025, 6, 1);
+    // Start with today's date
+    let currentDate = new Date();
     let selectedDate = null;
 
     // Map dates (YYYY-MM-DD) to Google Sheet URLs
@@ -268,5 +268,3 @@
   </script>
 </body>
 </html>
-
-o
